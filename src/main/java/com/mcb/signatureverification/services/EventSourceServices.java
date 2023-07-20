@@ -6,6 +6,7 @@ import com.mcb.signatureverification.entity.SignatureVerificationData;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //@Service
 public interface EventSourceServices {
@@ -13,5 +14,6 @@ public interface EventSourceServices {
     String updatedAssignee(List<EventSourceBE> eventSourceBES) throws DataNotFoundException;
     EventSourceBE updateEvent(EventSourceBE eventSourceBE) throws DataNotFoundException;
     SignatureVerificationData getSignatureVerificationData() throws DataNotFoundException;
+    Optional<EventSourceBE> getEventSourceById(Long id);
 
 }

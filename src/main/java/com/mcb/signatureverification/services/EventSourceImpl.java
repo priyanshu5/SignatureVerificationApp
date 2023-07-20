@@ -51,6 +51,7 @@ public class EventSourceImpl implements EventSourceServices{
     public EventSourceBE updateEvent(EventSourceBE eventSourceBE) throws DataNotFoundException {
         Optional<EventSourceBE> eventSourcedb = eventSourceRepo.findById(eventSourceBE.getId());
         if(eventSourcedb.isPresent()){
+//            EventSourceBE response = mapEventSourceObjecs()
 //            EventSourceBE eventSourceBEdb = (EventSourceBE)eventSourcedb.get().get()1;
 
             eventSourcedb.get().setId(eventSourceBE.getId());
@@ -109,6 +110,11 @@ public class EventSourceImpl implements EventSourceServices{
         signatureVerificationData.setNotVerifiedCount(notVerifiedCount);
         System.out.println(signatureVerificationData);
         return signatureVerificationData;
+    }
+    @Override
+    public Optional<EventSourceBE> getEventSourceById(Long id){
+
+        return eventSourceRepo.findById(id);
     }
 
 }

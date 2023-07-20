@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -79,6 +80,16 @@ public class VerifySignatureController {
     public ResponseEntity<List<EventSourceBE>> getAllEventSources() throws DataNotFoundException {
         List<EventSourceBE> eventSourceBES = eventSourceServices.getAllEvents();
         return ResponseEntity.ok(eventSourceBES);
+    }
+    @GetMapping("/event-source/{id}")
+    public ResponseEntity<EventSourceBE> getEventSourceByid(@PathVariable long id) throws DataNotFoundException {
+        Optional<EventSourceBE> eventSourceBE = eventSourceServices.getEventSourceById(id);
+        if(eventSourceBE.isPresent()){
+            return ResponseEntity.ok(eventSourceBE.get());
+        }
+        else{
+            throw new DataNotFoundException("Data not found in database");
+        }
     }
 
     private void doAuthenticate(String username, String password) {
