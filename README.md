@@ -41,7 +41,7 @@ Before setting up the project, ensure you have the following installed on your l
 
 5. The application will start running on `http://localhost:8080`.
 
-8. Access the application in your browser:
+8. Access the application Rest API call using Postman:
 
    Open postman and hit post call with username and password at `http://localhost:8080/verify-signature/auth/login`.
 
